@@ -10,7 +10,7 @@ const Landing = () => {
             <AtomicLoader />
             <div className='flex flex-col items-center justify-center w-2/3 md:w-2/5'>
                 <p className=" text-center mt-2 text-lg">App’s Coming</p>
-                <p className=" text-center text-base">Precision Takes Time</p>
+                <p className=" text-center text-base"><span className='text-accent'>Precision</span> Takes Time</p>
             </div>
         </div>
     );
