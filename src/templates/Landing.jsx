@@ -14,7 +14,7 @@ const Landing = () => {
             </div>
             <div className='flex flex-col items-center justify-center w-2/3 md:w-2/5'>
                 <p className=" text-center mt-2 text-lg">contact us</p>
-                <a 
+                <a
                 href="mailto:khashayarmobarezbusiness@gmail.com" 
                 className=" text-center text-base text-accent hover:underline"
                 >
