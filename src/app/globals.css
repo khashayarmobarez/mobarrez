@@ -1,13 +1,16 @@
 @import "tailwindcss";
 
+/* tech titan color pallete */
 /* background color 1a1a1a */
 /* foreground color d1d5db */
 /* accent color 00A3FF */
+/* secondary 39ff14 */
 
 :root {
   --background: #1a1a1a;
   --foreground: #d1d5db;
   --accent-color: #00a3ff;
+  --secondary-color: #39ff14;
 }
 
 @theme inline {
