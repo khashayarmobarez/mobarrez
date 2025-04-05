@@ -7,8 +7,8 @@
 /* secondary 39ff14 */
 
 :root {
-  --background: #1a1a1a;
-  --foreground: #d1d5db;
+  --background: #f1f1f1;
+  --foreground: #1a1a1a;
   --accent-color: #00a3ff;
   --secondary-color: #39ff14;
 }
@@ -22,12 +22,14 @@
   --letter-spacing-tighter: -0.025em;
 }
 
-/* @media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) {
   :root {
     --background: #1a1a1a;
-    --foreground: #d1d5db;
+    --foreground: #f1f1f1;
+    --accent-color: #00a3ff;
+    --secondary-color: #39ff14;
   }
-} */
+}
 
 body {
   background: var(--background);

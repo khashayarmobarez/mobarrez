@@ -19,7 +19,7 @@ const AtomicLoader = () => {
                 --float: 5%;
                 --radius: 2rem;
 
-                background: #f33;
+                background: var(--accent-color);
                 border-radius: var(--radius);
                 height: var(--radius);
                 position: relative;
@@ -70,8 +70,8 @@ const AtomicLoader = () => {
                 }
 
                 .loader-orbits {
-                --color-line: #fff;
-                --color-glow: #0ff;
+                --color-line: var(--foreground);
+                --color-glow: var(--secondary-color);
                 --electron-nb: 3;
                 --radius: 500%;
 
