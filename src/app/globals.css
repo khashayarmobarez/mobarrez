@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "daisyui";
 
 /* tech titan color pallete */
 /* background color 1a1a1a */
@@ -11,6 +12,11 @@
   --foreground: #1a1a1a;
   --accent-color: #00a3ff;
   --secondary-color: #39ff14;
+  --warning-color: #ff9500;
+  --error-color: #ff3333;
+  --success-color: #39ff14;
+  --info-color: #007bff;
+  --disabled-color: #b0b0b0;
 }
 
 @theme inline {
@@ -18,6 +24,11 @@
   --color-foreground: var(--foreground);
   --color-accent: var(--accent-color);
   --color-secondary: var(--secondary-color);
+  --color-warning: var(--warning-color);
+  --color-error: var(--error-color);
+  --color-success: var(--success-color);
+  --color-info: var(--info-color);
+  --color-disabled: var(--disabled-color);
   --font-display: "Inter", "sans-serif";
   --letter-spacing-tighter: -0.025em;
 }
@@ -28,6 +39,11 @@
     --foreground: #f1f1f1;
     --accent-color: #00a3ff;
     --secondary-color: #39ff14;
+    --warning-color: #ffaa33;
+    --error-color: #ff6666;
+    --success-color: #39ff14;
+    --info-color: #66b3ff;
+    --disabled-color: #666;
   }
 }
 
