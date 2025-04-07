@@ -1,5 +1,7 @@
 import { Inter } from "next/font/google";
-import "./globals.css";
+import "@/styles/globals.css"; // Import global styles
+import Logo from "@/assets/logo/Logo";
+import Navbar from "@/modules/Navbar";
 
 // Configure Inter with weights and subsets
 const inter = Inter({
@@ -20,6 +22,7 @@ export default function RootLayout({ children }) {
       <body
         className={``}
       >
+        <Navbar />
         {children}
       </body>
     </html>
