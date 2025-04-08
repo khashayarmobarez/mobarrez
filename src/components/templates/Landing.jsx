@@ -1,5 +1,5 @@
 import Logo from '@/assets/logo/Logo';
-import AtomicLoader from '@/elements/AtomicLoader';
+import AtomicLoader from '@/components/elements/AtomicLoader';
 import React from 'react';
 
 const Landing = () => {
