@@ -1,14 +1,14 @@
 "use client"; // Client component due to interactivity
 
 
-const NavbarSwitch = ({classname, onClick}) => {
+const NavbarSwitch = ({classname, onClick, checked}) => {
   return (
     <div className={classname}>
-        <input id="checkbox" type="checkbox" />
-        <label className="toggle" htmlFor="checkbox" >
-          <div className="bar bar--top" />
-          <div className="bar bar--middle" />
-          <div className="bar bar--bottom" />
+        <input id="checkbox" type="checkbox" onClick={onClick} checked={checked} />
+        <label className="toggle z-50" htmlFor="checkbox" >
+          <div className="bar bar--top h-0.5" />
+          <div className="bar bar--middle h-0.5" />
+          <div className="bar bar--bottom h-0.5" />
         </label>
 
       <style jsx>{`
