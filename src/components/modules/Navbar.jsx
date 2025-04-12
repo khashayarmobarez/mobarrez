@@ -30,7 +30,7 @@ const Navbar = () => {
         </Link>
 
         <div className="flex items-center justify-center">
-          <NavbarSwitch className="mt-2 z-50" onClick={toggleDrawer} checked={isDrawerOpen} />
+          <NavbarSwitch className=" z-50" onClick={toggleDrawer} checked={isDrawerOpen} />
         </div>
       </div>
 

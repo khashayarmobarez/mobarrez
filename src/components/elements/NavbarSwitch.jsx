@@ -1,84 +1,88 @@
-"use client"; // Client component due to interactivity
+"use client";
+import { useRef } from "react";
 
+ // Client component due to interactivity
 
-const NavbarSwitch = ({classname, onClick, checked}) => {
+const NavbarSwitch = ({ className, onClick, checked }) => {
+
+  const burgerRef = useRef(null);
+
   return (
-    <div className={classname}>
-        <input id="checkbox" type="checkbox" onClick={onClick} checked={checked} />
-        <label className="toggle z-50" htmlFor="checkbox" >
-          <div className="bar bar--top h-0.5" />
-          <div className="bar bar--middle h-0.5" />
-          <div className="bar bar--bottom h-0.5" />
-        </label>
+    <div className={className}>
+      <label className="burger z-50" htmlFor="burger" ref={burgerRef}>
+          <input type="checkbox" id="burger" checked={checked} onChange={onClick} />
+          <span></span>
+          <span></span>
+          <span></span>
+      </label>
 
       <style jsx>{`
-        #checkbox {
+        .burger {
+            position: relative;
+            width: 24px;
+            height: 20px;
+            background: transparent;
+            cursor: pointer;
+            display: block;
+        }
+
+        .burger input {
             display: none;
         }
 
-        .toggle {
-            position: relative;
-            width: 40px;
-            cursor: pointer;
-            margin: auto;
+        .burger span {
             display: block;
-            height: 2.2rem;
-            border: none;
-        }
-
-        .bar {
             position: absolute;
-            left: 0;
-            right: 0;
-            height: 1px;
-            border-radius: calc(4px / 2);
-            background: var(--foreground);
-            color: inherit;
+            height: 2.5px;
+            width: 100%;
+            background: #eeeeee;
+            border-radius: 9px;
             opacity: 1;
-            transition: none 0.35s cubic-bezier(.5,-0.35,.35,1.5) 0s;
+            left: 0;
+            transform: rotate(0deg);
+            transition: .25s ease-in-out;
         }
 
-        /***** Tornado Animation *****/
-
-        .bar--top {
-            bottom: calc(50% + 11px + 4px/ 2);
-            transition-property: bottom,transform;
-            transition-delay: calc(0s + 0.35s) * .6;
+        .burger span:nth-of-type(1) {
+            top: 0px;
+            transform-origin: left center;
         }
 
-        .bar--middle {
-            top: 12px;
-            transition-property: opacity,transform;
-            transition-delay: calc(0s + 0.35s * .3);
+        .burger span:nth-of-type(2) {
+            top: 50%;
+            transform: translateY(-50%);
+            transform-origin: left center;
         }
 
-        .bar--bottom {
-            top: 24px;
-            transition-property: top,transform;
-            transition-delay: 0s;
-            rotate: 0deg;
+        .burger span:nth-of-type(3) {
+            top: 100%;
+            transform-origin: right center;
+            transform: translateY(-100%);
+            width: 70%;
+            right: 0;
+            left: auto;
         }
 
-        #checkbox:checked + .toggle .bar--top {
-            transform: rotate(-135deg);
-            transition-delay: 0s;
-            bottom: calc(50% - 4px/ 2);
+        .burger input:checked ~ span:nth-of-type(1) {
+            transform: rotate(45deg);
+            top: -1px;
+            left: 8px;
         }
 
-        #checkbox:checked + .toggle .bar--middle {
+        .burger input:checked ~ span:nth-of-type(2) {
+            width: 0%;
             opacity: 0;
-            transform: rotate(-135deg);
-            transition-delay: calc(0s + 0.35s * .3);
         }
 
-        #checkbox:checked + .toggle .bar--bottom {
-            top: calc(50% - 4px/ 2);
-            transform: rotate(-225deg);
-            transition-delay: calc(0s + 0.35s * .6);
+        .burger input:checked ~ span:nth-of-type(3) {
+            transform: rotate(-45deg);
+            top: -1px;
+            left: 0px;
+            width: 100%;
         }
       `}</style>
     </div>
   );
 };
 
-export default NavbarSwitch;
+export default NavbarSwitch;  
