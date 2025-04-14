@@ -1,3 +1,4 @@
+import Logo from "@/assets/logo/Logo";
 
 
 export default function Loading() {
