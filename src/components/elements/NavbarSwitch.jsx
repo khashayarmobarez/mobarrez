@@ -35,7 +35,7 @@ const NavbarSwitch = ({ className, onClick, checked }) => {
             position: absolute;
             height: 2.5px;
             width: 100%;
-            background: #eeeeee;
+            background: var(--foreground);
             border-radius: 9px;
             opacity: 1;
             left: 0;

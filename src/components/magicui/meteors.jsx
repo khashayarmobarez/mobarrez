@@ -6,7 +6,7 @@ export const Meteors = ({
   number = 20,
   minDelay = 0.2,
   maxDelay = 1.2,
-  minDuration = 2,
+  minDuration = 4,
   maxDuration = 10,
   angle = 215,
   className
