@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 
 export const Meteors = ({
   number = 20,
-  minDelay = 0.2,
+  minDelay = 0.4,
   maxDelay = 1.2,
   minDuration = 4,
   maxDuration = 10,
