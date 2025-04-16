@@ -23,7 +23,7 @@ const Landing = async () => {
 
     return (
         <div className="flex flex-col items-center justify-start min-h-screen gap-y-2 snap-container">
-            <div className='flex flex-col w-full h-[90vh] items-center gap-y-2'>
+            <div className='flex flex-col w-full h-[90vh] items-center gap-y-2 snap-section'>
               <div className="relative overflow-hidden h-[650px] md:h-[550px] w-full max-w-[350px] md:max-w-none -mb-[450px]  ">
                   <Meteors />
               </div>
@@ -37,7 +37,13 @@ const Landing = async () => {
               <button className="btn btn-outline btn-primary w-80 h-10 rounded-2xl text-primary transform hover:scale-105 hover:text-foreground transition-transform duration-300 mt-2">Explore Our Solutions</button>
               <button className="btn btn-primary w-80 h-10 rounded-2xl text-[#f1f1f1] transform hover:scale-105 transition-transform duration-300">Get in touch</button>
             </div>
-            <div className='flex flex-col w-full h-[90vh] items-center gap-y-2'>
+            <div className='flex flex-col w-full h-[90vh] items-center gap-y-2 snap-section'>
+              
+            </div>
+            <div className='flex flex-col w-full h-[90vh] items-center gap-y-2 snap-section'>
+              
+            </div>
+            <div className='flex flex-col w-full h-[90vh] items-center gap-y-2 snap-section'>
               
             </div>
             {/* <AtomicLoader /> */}
