@@ -1,9 +1,15 @@
-import Logo from '@/assets/logo/Logo';
-import AtomicLoader from '@/components/elements/AtomicLoader';
 import React, { Suspense } from 'react';
+
+// assets
+import Logo from '@/assets/logo/Logo';
+
+// components
+import AtomicLoader from '@/components/elements/AtomicLoader';
 import { Meteors } from '../magicui/meteors';
 import { MorphingText } from '../magicui/morphing-text';
 import ScrollDown from '../elements/ScrollDown';
+import AboutSection from '../modules/landing/AboutSection';
+
 
 async function SlowComponent() {
     // Artificial 3-second delay to simulate loading
@@ -38,12 +44,9 @@ const Landing = async () => {
               <p className='text-center text-base text-muted-foreground w-[90%]'>We deliver cutting-edge tech solutions to propel your business forward.</p>
               <button className="btn btn-outline btn-primary w-80 h-10 rounded-2xl text-primary transform hover:scale-105 hover:text-foreground transition-transform duration-300 mt-2">Explore Our Solutions</button>
               <button className="btn btn-primary w-80 h-10 rounded-2xl text-[#f1f1f1] transform hover:scale-105 transition-transform duration-300">Get in touch</button>
-              <ScrollDown  />
+              <ScrollDown className={'mt-28'} />
             </div>
-            {/* About/introduction section */}
-            <div className='flex flex-col w-full h-[90vh] items-center gap-y-2 snap-section'>
-              
-            </div>
+            <AboutSection />
             {/* <AtomicLoader /> */}
             {/* <div className='flex flex-col items-center justify-center w-2/3 md:w-2/5'>
                 <p className=" text-center mt-2 text-lg">App's Coming</p>

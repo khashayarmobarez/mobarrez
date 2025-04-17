@@ -1,14 +1,14 @@
 'use client'
 import React, { useEffect } from 'react';
 
-const ScrollDown = () => {
+const ScrollDown = ({ className }) => {
     useEffect(() => {
         document.documentElement.style.scrollBehavior = "smooth";
     }, []);
 
     return (
         <>
-            <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 ">
+            <div className={` bottom-8 transform ${className} `}>
                 <a className="scroll-button w-[30px] h-[50px] rounded-[30px] flex items-center justify-center bg-transparent border-none outline outline-accent shadow-[0_0_10px_var(--accent-color)] relative">
                     <div className="w-[5px] h-[10px] rounded-[10px] bg-accent shadow-[0_0_10px_var(--accent-color)] animate-scroll translate-y-[40%]" />
                 </a>
