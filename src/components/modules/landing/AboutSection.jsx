@@ -22,25 +22,16 @@ import GoogleCloudIcon from '@/components/icons/GoogleCloudIcon';
 
 const AboutSection = () => {
     return (
-        <div className='flex w-full h-[100vh] pt-16 items-center justify-between gap-y-2 snap-section'>
+        <div className='flex flex-col w-full h-[100vh] pt-16 items-center justify-around gap-y-2 md:flex-row md:h-[95vh]'>
             
-            <div className="card">
-                <div className="tools">
-                    <div className="circle">
-                        <span className="red box" />
-                    </div>
-                    <div className="circle">
-                        <span className="yellow box" />
-                    </div>
-                    <div className="circle">
-                        <span className="green box" />
-                    </div>
-                </div>
-                <div className="card__content">
-                </div>
+            <div className='flex flex-col items-center justify-center w-full md:w-[50%]'>
+                <div className="shine text-center ">Your Partner in Tech Excellence</div>
+                <p className='text-muted-foreground text-center md:w-[60%] w-[80%] mt-2 font-semibold opacity-70'>
+                At Mobarrez, we specialize in delivering innovative tech solutions that drive progress. From web development to AI integration and automation, our team is dedicated to transforming ideas into impactful realities with precision and creativity.
+                </p>
             </div>
 
-            <div className='w-auto'>
+            <div className='w-[50%] flex items-center justify-center -mt-4'>
                 <IconCloud icons={[
                     <NextIcon key="next" className="text-foreground" />,
                     <TailwindIcon key="tailwind" className="text-[#06B6D4]" />,
@@ -68,44 +59,43 @@ const AboutSection = () => {
             </div>
 
             <style jsx>{`
-                .card {
-                    width: 40%;
-                    height: 404px;
-                    margin: 0 auto;
-                    background-color: #011522;
-                    border-radius: 8px;
-                    z-index: 1;
+                .shine {
+                    font-size: 1.8rem;
+                    font-weight: 800;
+                    color: rgba(255, 255, 255, 0.3);
+                    background: #222 -webkit-gradient(
+                        linear,
+                        left top,
+                        right top,
+                        from(#222),
+                        to(#222),
+                        color-stop(0.5, #fff)
+                    ) 0 0 no-repeat;
+                    background-image: -webkit-linear-gradient(
+                    -40deg,
+                    transparent 0%,
+                    transparent 40%,
+                    #fff 50%,
+                    transparent 60%,
+                    transparent 100%
+                    );
+                    -webkit-background-clip: text;
+                    -webkit-background-size: 50px;
+                    -webkit-animation: zezzz;
+                    -webkit-animation-duration: 5s;
+                    -webkit-animation-iteration-count: infinite;
                 }
-
-                .tools {
-                    display: flex;
-                    align-items: center;
-                    padding: 9px;
-                }
-
-                .circle {
-                    padding: 0 4px;
-                }
-
-                .box {
-                    display: inline-block;
-                    align-items: center;
-                    width: 10px;
-                    height: 10px;
-                    padding: 1px;
-                    border-radius: 50%;
-                }
-
-                .red {
-                    background-color: #ff605c;
-                }
-
-                .yellow {
-                    background-color: #ffbd44;
-                }
-
-                .green {
-                    background-color: #00ca4e;
+                @-webkit-keyframes zezzz {
+                    0%,
+                    10% {
+                        background-position: -400px;
+                    }
+                    20% {
+                        background-position: top left;
+                    }
+                    100% {
+                        background-position: 400px;
+                    }
                 }
             `}</style>
         </div>
