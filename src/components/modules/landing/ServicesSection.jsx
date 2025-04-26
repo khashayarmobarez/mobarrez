@@ -44,19 +44,6 @@ const ServicesSection = () => {
                         Ai agents, automation and integration
                     </TypingAnimation>
                 )}
-                <div className="relative overflow-hidden h-[500px] w-full">
-                    <OrbitingCircles>
-                        <File />
-                        <Settings />
-                        <File />
-                    </OrbitingCircles>
-                    <OrbitingCircles radius={100} reverse>
-                        <File />
-                        <Settings />
-                        <File />
-                        <Search />
-                    </OrbitingCircles>
-                </div>
             </div>
             <div className='flex flex-col items-center justify-center w-full h-[100vh] '>
                 <h1 className='text-4xl font-bold'>Software development</h1>
