@@ -37,19 +37,30 @@ const ServicesSection = () => {
 
     return (
         <div id="services-section" className='flex flex-col w-full h-auto items-center justify-center snap-section'>
-            <div className='flex flex-col items-start justify-start pt-16 pl-16 w-full h-[100vh] bg-foreground text-background'>
+            <div className='flex flex-col items-center text-center px-4 md:items-start justify-start pt-16 md:pl-16 md:pr-0 w-full h-[100vh] bg-foreground text-background'>
                 {
                 isVisible && (
                     <TypingAnimation className="text-4xl font-bold">
                         Ai agents, automation and integration
                     </TypingAnimation>
                 )}
+                
             </div>
-            <div className='flex flex-col items-center justify-center w-full h-[100vh] '>
-                <h1 className='text-4xl font-bold'>Software development</h1>
+            <div className='flex flex-col items-center text-center px-4 md:items-start justify-start pt-16 md:pl-16 h-[100vh] '>
+                {
+                isVisible && (
+                    <TypingAnimation className="text-4xl font-bold">
+                        Software development
+                    </TypingAnimation>
+                )}
             </div>
-            <div className='flex flex-col items-center justify-center w-full h-[100vh] bg-foreground text-background'>
-                <h1 className='text-4xl font-bold'>Startups and consulting</h1>
+            <div className='flex flex-col items-center text-center px-4 md:items-start justify-start pt-16 md:pl-16 w-full h-[100vh] bg-foreground text-background'>
+                {
+                isVisible && (
+                    <TypingAnimation className="text-4xl font-bold">
+                        Startups and consulting
+                    </TypingAnimation>
+                )}
             </div>
         </div>
     );
