@@ -41,9 +41,9 @@ const Landing = async () => {
                   <MorphingText texts={["Mobarrez", "AI automation", "Web-apps", "Applications"]} />
               </div>
               {/* <h1 className=" text-3xl font-extrabold">Mobarrez</h1> */}
-              <h2 className=" text-xl font-medium mb-0 -mt-5 md:mt-2">Precision in Progress</h2>
-              <p className='text-center text-base tex t-muted-foreground w-[90%]'>We deliver cutting-edge tech solutions to propel your business forward.</p>
-              <button className="btn btn-outline btn-primary w-80 h-10 rounded-2xl text-primary transform hover:scale-105 hover:text-foreground transition-transform duration-300 mt-2">Explore Our Solutions</button>
+              <h2 className=" text-xl font-medium mb-0 -mt-5 md:mt-2 z-20">Precision in Progress</h2>
+              <p className='text-center text-base tex t-muted-foreground w-[90%] z-20'>We deliver cutting-edge tech solutions to propel your business forward.</p>
+              <button className="btn btn-outline btn-primary w-80 h-10 rounded-2xl text-primary transform hover:scale-105 hover:text-background transition-transform duration-300 mt-2">Explore Our Solutions</button>
               <button className="btn btn-primary w-80 h-10 rounded-2xl text-[#f1f1f1] transform hover:scale-105 transition-transform duration-300">Get in touch</button>
               <ScrollDown className={'mt-28'} />
             </div>
