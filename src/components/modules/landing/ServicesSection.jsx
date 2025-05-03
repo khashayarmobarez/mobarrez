@@ -46,6 +46,7 @@ const ServicesSection = () => {
                     </TypingAnimation>
                 )}
             </div>
+            {/* keeping the streak */}
             <div className='flex flex-col items-center text-center px-4 md:items-start justify-start pt-16 md:pl-16 w-full h-[100vh] '>
                 {
                 isVisible && (
