@@ -39,17 +39,18 @@ const ServicesSection = () => {
 
     return (
         <div id="services-section" className='flex flex-col w-full h-auto items-center justify-center snap-section'>
-            <div className='flex flex-col items-center text-center px-4 md:items-start justify-start pt-16 md:px-16 w-full h-[105vh] bg-foreground text-background'>
+            <div className='flex flex-col items-center text-center px-4 md:items-start justify-start pt-16 md:px-16 w-full h-[52rem] bg-foreground text-background 
+            md:h-[100vh] '>
                 {
                 isVisible && (
                     <TypingAnimation className="text-4xl font-bold">
                         Ai agents, automation and integration
                     </TypingAnimation>
                 )}
-                <div className='flex flex-col items-center justify-center w-full h-full gap-y-8
-                md:flex-row md:justify-between md:px-4'>
+                <div className='flex flex-col items-start justify-around  w-full h-full  md:gap-y-8
+                md:flex-row md:justify-between md:px-4 md:items-center'>
                     <AnimatedBeamDemo />
-                    <p className=" md:text-xl md:w-[35%]">
+                    <p className=" text-xl md:w-[35%] font-semibold">
                         We integrate advanced AI and automation to optimize your workflows with precision, delivering personalized solutions that boost efficiency and elevate customer experiences.
                     </p>
                 </div>
