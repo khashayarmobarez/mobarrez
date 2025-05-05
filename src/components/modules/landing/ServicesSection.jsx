@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { TypingAnimation } from '@/components/magicui/typing-animation';
 import { AnimatedBeam } from '@/components/magicui/animated-beam';
+import AiAutomationAnimate from './AiAutomationAnimate';
 
 const ServicesSection = () => {
     const [isVisible, setIsVisible] = useState(false);
@@ -45,6 +46,7 @@ const ServicesSection = () => {
                         Ai agents, automation and integration
                     </TypingAnimation>
                 )}
+                <AiAutomationAnimate />
             </div>
             <div className='flex flex-col items-center text-center px-4 md:items-start justify-start pt-16 md:pl-16 w-full h-[100vh] '>
                 {
