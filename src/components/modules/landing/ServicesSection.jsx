@@ -4,6 +4,8 @@ import React, { useEffect, useState } from 'react';
 import { TypingAnimation } from '@/components/magicui/typing-animation';
 import { AnimatedBeam } from '@/components/magicui/animated-beam';
 import AnimatedBeamDemo from './AiAutomationAnimate';
+import { Terminal } from '@/components/magicui/terminal';
+import { TerminalSection } from '@/components/elements/TerminalSection';
 
 const ServicesSection = () => {
     const [isVisible, setIsVisible] = useState(false);
@@ -55,13 +57,22 @@ const ServicesSection = () => {
                     </p>
                 </div>
             </div>
-            <div className='flex flex-col items-center text-center px-4 md:items-start justify-start pt-16 md:pl-16 w-full h-[100vh] '>
+            <div className='flex flex-col items-center text-center px-4 md:items-start justify-start pt-16 md:px-16 w-full h-[52rem] md:h-[100vh]'>
                 {
                 isVisible && (
                     <TypingAnimation className="text-4xl font-bold">
                         Software development
                     </TypingAnimation>
                 )}
+                <div className='flex flex-col items-start justify-around  w-full h-full  md:gap-y-8
+                md:flex-row md:justify-between md:px-4 md:items-center'>
+                    <div className='text-start w-full flex items-center  md:w-[60%] '>
+                        <TerminalSection />
+                    </div>
+                    <p className=" text-xl md:w-[35%] font-semibold">
+                        We integrate advanced AI and automation to optimize your workflows with precision, delivering personalized solutions that boost efficiency and elevate customer experiences.
+                    </p>
+                </div>
             </div>
             <div className='flex flex-col items-center text-center px-4 md:items-start justify-start pt-16 md:pl-16 w-full h-[100vh] bg-foreground text-background'>
                 {
