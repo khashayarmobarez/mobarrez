@@ -7,10 +7,10 @@ import {
   export function TerminalSection() {
     return (
       <Terminal>
-        <TypingAnimation>&gt; pnpm dlx  init</TypingAnimation>
+        <TypingAnimation>&gt; pnpm dlx Mobarrez projects</TypingAnimation>
   
         <AnimatedSpan delay={1500} className="text-green-500">
-          <span>✔ Preflight checks.</span>
+          <span>✔ precision.</span>
         </AnimatedSpan>
   
         <AnimatedSpan delay={2000} className="text-green-500">
@@ -55,7 +55,7 @@ import {
         </TypingAnimation>
   
         <TypingAnimation delay={7000} className="text-muted-foreground">
-          You may now add components.
+          You may now set a meeting with us.
         </TypingAnimation>
       </Terminal>
     );
