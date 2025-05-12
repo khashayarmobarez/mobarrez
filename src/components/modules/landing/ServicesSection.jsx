@@ -69,6 +69,7 @@ const ServicesSection = () => {
                     </p>
                 </div>
             </div>
+            {/* useless comment */}
             <div className='flex flex-col items-center text-center px-4 md:items-start justify-start pt-16 md:px-16 w-full h-[52rem] md:h-[100vh]'>
                 {
                 visible2 && (
