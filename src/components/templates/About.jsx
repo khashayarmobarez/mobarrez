@@ -101,24 +101,24 @@ const About = () => {
             </section>
 
             {/* CTA Section */}
-            <section className="flex flex-col items-center text-center px-4 md:items-start justify-start pt-16 md:px-16 w-full h-[100vh] snap-section">
+            <section className="flex flex-col items-center text-center px-4 md:items-start justify-start pt-16 md:px-16 w-full pb-16">
                 <h2 className="text-4xl font-bold shine">Ready to Innovate?</h2>
                 <p className="text-lg text-muted-foreground max-w-2xl mt-4">
                 Let’s work together to turn your ideas into reality with precision and creativity.
                 </p>
                 <div className="mt-6 flex justify-center gap-4">
-                <Link
-                    href="/services"
-                    className="rounded-lg bg-accent px-6 py-3 text-background transition hover:bg-opacity-80"
-                >
-                    Explore Our Services
-                </Link>
-                <Link
-                    href="/contact"
-                    className="rounded-lg border border-secondary px-6 py-3 text-secondary transition hover:bg-secondary hover:text-background"
-                >
-                    Get in Touch
-                </Link>
+                    <Link
+                        href="/services"
+                        className="rounded-lg bg-accent px-6 py-3 text-background transition hover:bg-opacity-80"
+                    >
+                        Explore Our Services
+                    </Link>
+                    <Link
+                        href="/contact"
+                        className="rounded-lg border border-secondary px-6 py-3 text-secondary transition hover:bg-secondary hover:text-background"
+                    >
+                        Get in Touch
+                    </Link>
                 </div>
             </section>
 
