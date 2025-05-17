@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import "@/styles/globals.css"; // Import global styles
 import Logo from "@/assets/logo/Logo";
 import Navbar from "@/components/modules/Navbar";
+import Footer from "@/components/modules/Footer";
 
 // Configure Inter with weights and subsets
 const inter = Inter({
@@ -24,6 +25,7 @@ export default function RootLayout({ children }) {
       >
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );
