@@ -25,7 +25,8 @@ const About = () => {
     return (
         <div className="flex flex-col w-full h-auto items-center justify-center">
             {/* Hero Section */}
-            <section className="relative w-full flex min-h-[105vh] flex-col items-center justify-center bg-gradient-to-b from-background to-[#2a2a2a] overflow-hidden">
+            <section className="relative w-full flex min-h-[105vh] flex-col items-center justify-center bg-gradient-to-b from-background to-foreground overflow-hidden"
+            style={{borderTop:'0'}}>
                 <Meteors number={20} className="z-0" />
                 <div className="relative z-10 text-center w-[85%] md:w-full flex flex-col items-center justify-center gap-y-4">
                     <TypingAnimation className="text-5xl font-bold text-foreground mb-4 shine">

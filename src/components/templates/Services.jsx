@@ -7,13 +7,15 @@ import { TerminalSection } from '@/components/elements/TerminalSection';
 
 export default function Services() {
   return (
-    <div className="flex flex-col w-full h-auto items-center justify-center snap-section bg-background text-foreground pt-20">
+    <div className="flex flex-col w-full h-auto items-center justify-center snap-section bg-background text-foreground pt-20 md:pt-10">
       {/* Introduction Section */}
-      <section className="flex flex-col items-center text-center px-4 md:items-start justify-start pt-16 md:px-16 w-full h-[100vh] bg-gradient-to-b from-background to-[#2a2a2a]">
-        <TypingAnimation className="text-5xl md:text-9xl font-bold text-foreground text-start md:w-2/3 mb-4 shine">
-          Here’s what we can do for you
-        </TypingAnimation>
-        <p className="text-lg text-muted-foreground max-w-2xl">
+      <section className="flex flex-col items-center text-center px-4 md:items-start justify-start pt-16 md:pt-0 md:px-16 w-full h-[100vh] gap-y-8 md:gap-y-4">
+        <div className="flex flex-col items-start justify-center min-h-32 md:min-h-80">
+          <TypingAnimation className="text-5xl md:text-8xl font-bold text-foreground text-start md:w-2/3 mb-4 shine">
+            Here’s what we can do for you
+          </TypingAnimation>
+        </div>
+        <p className="text-2xl text-muted-foreground text-start max-w-2xl">
           At Mobarrez, we deliver cutting-edge technology solutions with a focus on precision and quality. Our services are designed to empower your business, transforming challenges into opportunities through innovation and expertise.
         </p>
       </section>
@@ -53,9 +55,9 @@ export default function Services() {
       </section>
 
       {/* CTA Section */}
-      <section className="flex flex-col items-center text-center px-4 md:items-start justify-start pt-16 md:px-16 w-full h-[100vh]">
+      <section className="flex flex-col items-center text-center px-4 md:items-start justify-start pt-16 md:px-16 w-full h-auto py-10">
         <h2 className="text-4xl font-bold shine">Let’s Build Your Future</h2>
-        <p className="text-lg text-muted-foreground max-w-2xl mt-4">
+        <p className="text-lg text-muted-foreground max-w-2xl mt-4 text-start">
           Ready to transform your business with our expertise? Explore our work or get in touch to start your project today.
         </p>
         <div className="mt-6 flex justify-center gap-4">
