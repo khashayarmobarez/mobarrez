@@ -35,6 +35,7 @@ const About = () => {
                     <p className="text-lg text-muted-foreground max-w-2xl">
                         At Mobarrez, we empower businesses by building intelligent AI agents, seamless AI-driven automation, and custom software solutions—including responsive websites and scalable applications—tailored to your unique needs. As a dedicated consulting team, we provide expert guidance to navigate the digital landscape, ensuring precision, innovation, and measurable growth for your business.
                     </p>
+                    {/* useless comment */}
                 </div>
             </section>
 
