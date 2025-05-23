@@ -47,7 +47,9 @@ const Landing = async () => {
               <Link href="/services">
                 <button className="btn btn-outline btn-primary w-80 h-10 rounded-2xl text-primary transform hover:scale-105 hover:text-background transition-transform duration-300 mt-2">Explore Our Solutions</button>
               </Link>
-              <button className="btn btn-primary w-80 h-10 rounded-2xl text-[#f1f1f1] transform hover:scale-105 transition-transform duration-300">Get in touch</button>
+              <Link href="/chat">
+                <button className="btn btn-primary w-80 h-10 rounded-2xl text-[#f1f1f1] transform hover:scale-105 transition-transform duration-300">Chat with our Ai Agent</button>
+              </Link>
               <ScrollDown className={'mt-28'} />
             </div>
             <AboutSection />
