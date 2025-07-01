@@ -58,7 +58,7 @@ export default function LoginPage() {
                 id="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="mt-1 block w-full rounded-lg border border-gray-600 bg-transparent px-4 py-2 text-foreground focus:border-accent focus:outline-none"
+                className="mt-1 block w-full rounded-xl border border-gray-600 bg-transparent px-4 py-2 text-foreground focus:border-accent focus:outline-none"
                 required
               />
             </div>
@@ -71,14 +71,14 @@ export default function LoginPage() {
                 id="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="mt-1 block w-full rounded-lg border border-gray-600 bg-transparent px-4 py-2 text-foreground focus:border-accent focus:outline-none"
+                className="mt-1 block w-full rounded-xl border border-gray-600 bg-transparent px-4 py-2 text-foreground focus:border-accent focus:outline-none"
                 required
               />
             </div>
             {error && <p className="text-red-500 text-sm">{error}</p>}
             <button
               type="submit"
-              className="w-full rounded-lg bg-accent px-4 py-2 text-background hover:bg-opacity-80 transition"
+              className="w-full rounded-xl bg-accent px-4 py-2 mt-2 text-background hover:bg-opacity-80 transition"
             >
               Login
             </button>
