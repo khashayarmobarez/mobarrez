@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
+import { signIn } from "next-auth/react"
+
 export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -24,6 +26,10 @@ export default function LoginPage() {
       router.push('/dashboard'); // Redirect to a dashboard or home page
     }
   };
+
+  const googleLogin = () => {
+    signIn("google")
+  }
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-background text-foreground">
@@ -85,6 +91,7 @@ export default function LoginPage() {
             <div className="flex gap-2 mt-2">
               <button
                 type="button"
+                onClick={googleLogin}
                 className="w-1/2 flex items-center justify-center gap-2 rounded-xl border border-gray-300 bg-white text-gray-700 font-medium py-2 hover:bg-gray-100 transition"
               >
                 {/* Google SVG Icon */}
