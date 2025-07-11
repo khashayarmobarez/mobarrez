@@ -3,6 +3,7 @@ import "@/styles/globals.css"; // Import global styles
 import Logo from "@/assets/logo/Logo";
 import Navbar from "@/components/modules/Navbar";
 import Footer from "@/components/modules/Footer";
+import { SessionProvider } from "next-auth/react";
 
 // Configure Inter with weights and subsets
 const inter = Inter({
@@ -20,12 +21,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={inter.className}>
-      <body
-        className={``}
-      >
-        <Navbar />
-        {children}
-        <Footer />
+      <body className={``}>
+        <SessionProvider>
+          <Navbar />
+          {children}
+          <Footer />
+        </SessionProvider>
       </body>
     </html>
   );

@@ -3,15 +3,23 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
-import { signIn } from "next-auth/react"
+import { signIn, useSession } from "next-auth/react"
 
 
 export default function SignupPage() {
+  
+  const router = useRouter();
+  const { data: session, status } = useSession();
+
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const router = useRouter();
+
+  if (status === "authenticated") {
+    router.push("/chat");
+    return null; // Prevent rendering the form
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
