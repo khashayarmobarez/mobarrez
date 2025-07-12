@@ -19,10 +19,11 @@ export default function LoginPage() {
   // Redirect if already authenticated
 
   useEffect(() => {
+    console.log(status)
     if (status === "authenticated") {
       router.push("/chat");
     }
-  }, [status, router]);
+  }, []);
   
   const handleSubmit = async (e) => {
     e.preventDefault();
