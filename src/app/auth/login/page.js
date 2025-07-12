@@ -23,7 +23,7 @@ export default function LoginPage() {
     if (status === "authenticated") {
       router.push("/chat");
     }
-  }, []);
+  }, [status, router]);
   
   const handleSubmit = async (e) => {
     e.preventDefault();
