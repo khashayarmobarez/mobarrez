@@ -90,7 +90,7 @@ const Navbar = () => {
               {link.name}
             </Link>
           ))}
-          <Link href="auth/login" className="btn btn-primary btn-base rounded-xl mt-6 self-center w-1/2">Login / Signup</Link>
+          <Link href="/auth/login" className="btn btn-primary btn-base rounded-xl mt-6 self-center w-1/2">Login / Signup</Link>
         </div>
       </div>
 
