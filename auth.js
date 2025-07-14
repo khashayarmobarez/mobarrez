@@ -14,8 +14,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
     LinkedInProvider({
-      clientId: process.env.LINKEDIN_CLIENT_ID,
-      clientSecret: process.env.LINKEDIN_CLIENT_SECRET,
+      clientId: process.env.AUTH_LINKEDIN_ID,
+      clientSecret: process.env.AUTH_LINKEDIN_SECRET,
     }),
     CredentialsProvider({
       name: "credentials",
@@ -29,9 +29,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         }
 
         try {
-          // Connect to your database
-          await client.connect();
-          const db = client.db(); // Use your database name
+          // Don't manually connect - let the adapter handle it
+          const db = client.db(); // Make sure you specify your database name here
           const users = db.collection("users");
 
           // Find user by email
@@ -63,7 +62,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   ],
   pages: {
     signIn: "/auth/login",
-    signUp: "/auth/signUp",
+    // Remove signUp from pages - NextAuth doesn't have a signUp page
   },
   session: {
     strategy: "jwt",
@@ -82,4 +81,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       return session;
     },
   },
+  // Add debug mode for development
+  debug: process.env.NODE_ENV === "development",
+  // Add secret for production
+  secret: process.env.NEXTAUTH_SECRET,
 });
