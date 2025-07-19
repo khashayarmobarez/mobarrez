@@ -33,7 +33,7 @@ export default function AuthError() {
   const errorInfo = getErrorMessage(error);
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-background text-foreground">
+    <div className="flex min-h-screen max-w-[90vw] flex-col items-center justify-center bg-background text-foreground">
       <div className="text-center w-full max-w-md">
         <h1 className="text-2xl font-bold text-red-500 mb-4">
           {errorInfo.title}
