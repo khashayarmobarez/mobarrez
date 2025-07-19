@@ -13,7 +13,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
-    LinkedInProvider ({
+    LinkedInProvider({
       clientId: process.env.LINKEDIN_ID,
       clientSecret: process.env.LINKEDIN_SECRET,
     }),
@@ -29,7 +29,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         }
 
         try {
-          const db = client.db("mobarrez"); // Specify database name
+          await client.connect();
+          const db = client.db("mobarrez");
           const users = db.collection("users");
 
           const user = await users.findOne({ email: credentials.email });
@@ -58,13 +59,20 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   ],
   pages: {
     signIn: "/auth/login",
-    // Remove signUp from pages - NextAuth doesn't have a signUp page
+    error: "/auth/error", // Add custom error page
   },
   session: {
     strategy: "jwt",
   },
   callbacks: {
-    async jwt({ token, user }) {
+    async signIn({ user, account, profile, email, credentials }) {
+      // Allow all sign-ins for OAuth providers
+      if (account.provider !== "credentials") {
+        return true;
+      }
+      return true;
+    },
+    async jwt({ token, user, account }) {
       if (user) {
         token.id = user.id;
       }
@@ -77,8 +85,15 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       return session;
     },
   },
-  // Add debug mode for development
+  // CRITICAL: Enable account linking
+  events: {
+    async linkAccount({ user }) {
+      console.log("Account linked for user:", user.email);
+    },
+  },
+  // Allow automatic account linking
+  allowDangerousEmailAccountLinking: true,
+  
   debug: process.env.NODE_ENV === "development",
-  // Add secret for production
   secret: process.env.AUTH_SECRET,
 });
