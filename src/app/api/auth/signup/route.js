@@ -70,5 +70,8 @@ export async function POST(request) {
       { message: "Internal server error" },
       { status: 500 }
     );
+  } finally {
+    // Add this to ensure connection is always closed
+    await client.close();
   }
 }
