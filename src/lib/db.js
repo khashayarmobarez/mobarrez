@@ -1,19 +1,23 @@
-import { MongoClient } from 'mongodb';
+import { MongoClient, ServerApiVersion } from "mongodb";
 
-const uri = process.env.MONGO_URI;
+const uri = process.env.MONGODB_URI;
+
+if (!uri) {
+  throw new Error('Invalid/Missing environment variable: "MONGODB_URI"');
+}
+
 const options = {
-  useUnifiedTopology: true,
-  useNewUrlParser: true,
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  },
 };
 
 let client;
 let clientPromise;
 
-if (!process.env.MONGO_URI) {
-  throw new Error('Please add your Mongo URI to .env.local');
-}
-
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === "development") {
   if (!global._mongoClientPromise) {
     client = new MongoClient(uri, options);
     global._mongoClientPromise = client.connect();
