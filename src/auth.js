@@ -3,11 +3,11 @@ import GoogleProvider from "next-auth/providers/google";
 import LinkedInProvider from "next-auth/providers/linkedin";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { MongoDBAdapter } from "@auth/mongodb-adapter";
-import client from "@/lib/db";
+import clientPromise from "@/lib/db";
 import bcrypt from "bcryptjs";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
-  adapter: MongoDBAdapter(client),
+  adapter: MongoDBAdapter(clientPromise),
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
@@ -65,12 +65,17 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     strategy: "jwt",
   },
   callbacks: {
-    async signIn({ user, account, profile, email, credentials }) {
-      // Allow all sign-ins for OAuth providers
-      if (account.provider !== "credentials") {
+    async signIn({ user, account, profile }) {
+      try {
+        if (account.provider === 'google' || account.provider === 'linkedin') {
+          // Add any custom validation if needed
+          return true;
+        }
         return true;
+      } catch (error) {
+        console.error('SignIn error:', error);
+        return false;
       }
-      return true;
     },
     async jwt({ token, user, account }) {
       if (user) {
