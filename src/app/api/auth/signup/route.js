@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
-import client from "@/lib/db";
+import clientPromise from "@/lib/db";
 
 export async function POST(request) {
   try {
@@ -11,7 +11,7 @@ export async function POST(request) {
     } catch {
       return NextResponse.json({ message: "Invalid JSON" }, { status: 400 });
     }
-    const { name, email, password } = await request.json();
+    const { name, email, password } = body;
 
     // Validate input
     if (!name || !email || !password) {
@@ -39,8 +39,8 @@ export async function POST(request) {
     }
 
     // Connect to database
-    await client.connect();
-    const db = client.db(); // Use your database name
+    const client = await clientPromise;
+    const db = client.db();
     const users = db.collection("users");
 
     // Check if user already exists
@@ -77,8 +77,5 @@ export async function POST(request) {
       { message: "Internal server error" },
       { status: 500 }
     );
-  } finally {
-    // Add this to ensure connection is always closed
-    await client.close();
-  }
+  } 
 }
