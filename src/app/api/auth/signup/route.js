@@ -4,6 +4,13 @@ import client from "@/lib/db";
 
 export async function POST(request) {
   try {
+
+    let body;
+    try {
+      body = await request.json();
+    } catch {
+      return NextResponse.json({ message: "Invalid JSON" }, { status: 400 });
+    }
     const { name, email, password } = await request.json();
 
     // Validate input

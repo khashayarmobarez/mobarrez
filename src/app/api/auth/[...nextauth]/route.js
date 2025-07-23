@@ -1,8 +1,3 @@
-import NextAuth from "next-auth"
-import { MongoDBAdapter } from "@auth/mongodb-adapter"
-import clientPromise from "@/lib/db"
+import { handlers } from "@/auth";
 
-export const { handlers, auth, signIn, signOut } = NextAuth({
-  adapter: MongoDBAdapter(clientPromise),
-  providers: [],
-})
+export const { GET, POST } = handlers;
