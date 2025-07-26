@@ -1,12 +1,15 @@
-import React from 'react';
-
-// comps
+import { auth } from "@/auth";
+import { redirect } from "next/navigation";
 import ChatAiAgent from '@/components/templates/ChatAiAgent';
 
-const page = () => {
-    return (
-        <ChatAiAgent />
-    );
-};
+export default async function ChatPage() {
+  const session = await auth();
 
-export default page;
+  // Redirect to login if not authenticated
+  if (!session) {
+    redirect('/auth/login');
+  }
+
+  // Pass session data to the component if needed
+  return <ChatAiAgent session={session} />;
+}

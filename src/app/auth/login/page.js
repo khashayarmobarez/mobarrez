@@ -2,25 +2,34 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { signIn, useSession } from "next-auth/react";
 import { useEffect } from 'react';
 
 export default function LoginPage() {
   const { data: session, status } = useSession();
   const router = useRouter();
+  const searchParams = useSearchParams();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
+   // Get the callback URL or default to chat
+  const callbackUrl = searchParams.get('callbackUrl') || '/chat';
+
   // Redirect if already authenticated
   useEffect(() => {
     if (status === "authenticated") {
-      router.push("/chat");
+      // Add a small delay to prevent race conditions
+      const timer = setTimeout(() => {
+        router.replace(callbackUrl);
+      }, 100);
+      
+      return () => clearTimeout(timer);
     }
-  }, [status, router]);
+  }, [status, router, callbackUrl]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,6 +41,7 @@ export default function LoginPage() {
         redirect: false,
         email,
         password,
+        callbackUrl: "/chat",
       });
 
       if (result?.error) {
