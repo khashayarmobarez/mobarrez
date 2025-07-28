@@ -72,7 +72,7 @@ const Navbar = () => {
           {/* User info - optional */}
           <div className={`${isMobile ? 'text-center' : 'hidden lg:flex flex-col'}`}>
             <span className="text-sm text-foreground">Welcome,</span>
-            <span className="text-xs text-muted-foreground truncate max-w-[100px]">
+            <span className="text-xs text-muted-foreground truncate max-w-[150px]">
               {session.user.name || session.user.email}
             </span>
           </div>
