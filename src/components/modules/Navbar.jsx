@@ -2,10 +2,12 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import { useSession, signOut } from "next-auth/react";
 import Logo from "@/assets/logo/Logo"; // Adjusted path from '@/assets/logo/Logo'
 import NavbarSwitch from "@/components/elements/NavbarSwitch"; // Adjusted path from '@/components/elements/NavbarSwitch'
 
 const Navbar = () => {
+  const { data: session, status } = useSession();
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [showNavbar, setShowNavbar] = useState(true);
   const lastScrollY = useRef(0);
@@ -13,6 +15,18 @@ const Navbar = () => {
   // Toggle drawer
   const toggleDrawer = () => {
     setIsDrawerOpen((prev) => !prev);
+  };
+
+  // Handle logout
+  const handleLogout = async () => {
+    try {
+      await signOut({ 
+        callbackUrl: '/', // Redirect to home page after logout
+        redirect: true 
+      });
+    } catch (error) {
+      console.error('Logout error:', error);
+    }
   };
 
   // Navigation links (placeholder routes)
@@ -38,6 +52,66 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Render authentication buttons based on session status
+  const renderAuthButtons = (isMobile = false) => {
+    const baseClasses = isMobile 
+      ? "btn btn-primary btn-base rounded-xl mt-6 self-center w-1/2" 
+      : "btn btn-primary btn-sm ml-4 md:ml-0 rounded-xl";
+
+    if (status === "loading") {
+      return (
+        <button className={`${baseClasses} disabled:opacity-50`} disabled>
+          Loading...
+        </button>
+      );
+    }
+
+    if (status === "authenticated" && session) {
+      return (
+        <div className={`${isMobile ? 'flex flex-col items-center gap-4 mt-6' : 'flex items-center gap-3'}`}>
+          {/* User info - optional */}
+          <div className={`${isMobile ? 'text-center' : 'hidden lg:flex flex-col'}`}>
+            <span className="text-sm text-foreground">Welcome,</span>
+            <span className="text-xs text-muted-foreground truncate max-w-[100px]">
+              {session.user.name || session.user.email}
+            </span>
+          </div>
+          
+          {/* Chat/Dashboard link */}
+          <Link 
+            href="/chat" 
+            className={`${baseClasses} ${isMobile ? 'w-1/2' : ''}`}
+            onClick={isMobile ? toggleDrawer : undefined}
+          >
+            Chat
+          </Link>
+          
+          {/* Logout button */}
+          <button 
+            onClick={() => {
+              if (isMobile) toggleDrawer();
+              handleLogout();
+            }}
+            className={`${baseClasses} ${isMobile ? 'w-1/2 btn-outline' : 'btn-outline'}`}
+          >
+            Logout
+          </button>
+        </div>
+      );
+    }
+
+    // Not authenticated
+    return (
+      <Link 
+        href="/auth/login" 
+        className={baseClasses}
+        onClick={isMobile ? toggleDrawer : undefined}
+      >
+        Login / Signup
+      </Link>
+    );
+  };
+
   return (
     <>
       {/* Navbar */}
@@ -60,11 +134,7 @@ const Navbar = () => {
               {link.name}
             </Link>
           ))}
-          <Link 
-          href="/auth/login" 
-          className="btn btn-primary btn-sm ml-4 md:ml-0 rounded-xl ">
-            Login / Signup
-          </Link>
+          {renderAuthButtons(false)}
         </div>
 
         {/* Mobile Menu Switch */}
@@ -90,7 +160,7 @@ const Navbar = () => {
               {link.name}
             </Link>
           ))}
-          <Link href="/auth/login" className="btn btn-primary btn-base rounded-xl mt-6 self-center w-1/2">Login / Signup</Link>
+          {renderAuthButtons(true)}
         </div>
       </div>
 
