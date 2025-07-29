@@ -13,8 +13,8 @@ export async function GET() {
     // 1. Check Environment Variables
     debugInfo.envCheck = {
       MONGODB_URI: !!process.env.MONGODB_URI,
-      NEXTAUTH_SECRET: !!process.env.NEXTAUTH_SECRET,
-      NEXTAUTH_URL: process.env.NEXTAUTH_URL,
+      AUTH_SECRET: !!process.env.AUTH_SECRET,
+      AUTH_URL: process.env.AUTH_URL,
       GOOGLE_CLIENT_ID: !!process.env.GOOGLE_CLIENT_ID,
       GOOGLE_CLIENT_SECRET: !!process.env.GOOGLE_CLIENT_SECRET,
       AUTH_LINKEDIN_ID: !!process.env.AUTH_LINKEDIN_ID,
@@ -92,9 +92,9 @@ export async function GET() {
 
     // 6. Test NextAuth configuration
     debugInfo.nextAuthConfig = {
-      hasSecret: !!process.env.NEXTAUTH_SECRET,
-      secretLength: process.env.NEXTAUTH_SECRET?.length || 0,
-      urlConfigured: !!process.env.NEXTAUTH_URL,
+      hasSecret: !!process.env.AUTH_SECRET,
+      secretLength: process.env.AUTH_SECRET?.length || 0,
+      urlConfigured: !!process.env.AUTH_URL,
       expectedUrl: "https://mobarrez.com"
     };
 
