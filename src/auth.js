@@ -101,5 +101,5 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     signIn: '/auth/login',
     error: '/auth/error',
   },
-  debug: process.env.NODE_ENV === 'development',
+  debug: true, // Enable debug mode for development 
 });
