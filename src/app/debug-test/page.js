@@ -136,7 +136,7 @@ export default function DebugTestPage() {
           <div className="bg-gray-800 p-6 rounded-lg">
             <h2 className="text-xl font-semibold mb-4">Instructions</h2>
             <ol className="list-decimal list-inside space-y-2 text-sm">
-              <li>First, run the "Debug Test" to check your system configuration</li>
+              <li>First, run the &quot;Debug Test&quot; to check your system configuration</li>
               <li>Check for any red flags in environment variables, MongoDB connection, or bcrypt</li>
               <li>Then test the signup functionality with both debug methods</li>
               <li>Compare results to identify where the issue occurs</li>
