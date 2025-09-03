@@ -1,4 +1,3 @@
-// src/lib/chatService.js
 import clientPromise from "@/lib/db";
 import { ObjectId } from "mongodb";
 
@@ -10,7 +9,7 @@ export class ChatService {
       const sessions = db.collection("chat_sessions");
 
       const session = {
-        userId: new ObjectId.createFromHexString(userId),
+        userId: new ObjectId(userId),  // Fixed: Using the constructor directly
         title,
         createdAt: new Date(),
         updatedAt: new Date(),
@@ -37,21 +36,20 @@ export class ChatService {
       const messages = db.collection("chat_messages");
       const sessions = db.collection("chat_sessions");
 
-      // Save the message
-    const messageDoc = {
-      sessionId: ObjectId.createFromHexString(sessionId),
-      message,
-      sender, // 'user' or 'ai'
-      intent,
-      metadata,
-      timestamp: new Date()
-    };
+      const messageDoc = {
+        sessionId: new ObjectId(sessionId),  // Fixed: Using the constructor directly
+        message,
+        sender, // 'user' or 'ai'
+        intent,
+        metadata,
+        timestamp: new Date()
+      };
 
       const messageResult = await messages.insertOne(messageDoc);
 
       // Update session's last activity and message count
       await sessions.updateOne(
-        { _id: new ObjectId.createFromHexString(sessionId) },
+        { _id: new ObjectId(sessionId) },  // Fixed: Using the constructor directly
         { 
           $set: { updatedAt: new Date() },
           $inc: { messageCount: 1 }
@@ -76,7 +74,7 @@ export class ChatService {
       const messages = db.collection("chat_messages");
 
       const history = await messages
-        .find({ sessionId: new ObjectId.createFromHexString(sessionId) })
+        .find({ sessionId: new ObjectId(sessionId) })  // Fixed: Using the constructor directly
         .sort({ timestamp: 1 })
         .limit(limit)
         .toArray();
@@ -98,7 +96,7 @@ export class ChatService {
       const sessions = db.collection("chat_sessions");
 
       const userSessions = await sessions
-        .find({ userId: new ObjectId.createFromHexString(userId), isActive: true })
+        .find({ userId: new ObjectId(userId), isActive: true })  // Fixed: Using the constructor directly
         .sort({ updatedAt: -1 })
         .limit(limit)
         .toArray();
@@ -120,7 +118,7 @@ export class ChatService {
       const sessions = db.collection("chat_sessions");
 
       await sessions.updateOne(
-        { _id: new ObjectId.createFromHexString(sessionId) },
+        { _id: new ObjectId(sessionId) },  // Fixed: Using the constructor directly
         { 
           $set: { 
             title,
@@ -146,8 +144,8 @@ export class ChatService {
       // Verify ownership and soft delete
       await sessions.updateOne(
         { 
-          _id: new ObjectId.createFromHexString(sessionId),
-          userId: new ObjectId.createFromHexString(userId)
+          _id: new ObjectId(sessionId),  // Fixed: Using the constructor directly
+          userId: new ObjectId(userId)   // Fixed: Using the constructor directly
         },
         { 
           $set: { 
