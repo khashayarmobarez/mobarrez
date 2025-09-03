@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useSession } from 'next-auth/react';
 
 const ChatAiAgent = ({ session }) => {
+    
     const [messages, setMessages] = useState([
         { id: 1, text: "Hello! I'm Mobarrez AI, ready to assist you. How can I help today?", sender: 'ai' },
     ]);
