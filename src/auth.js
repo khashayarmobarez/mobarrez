@@ -62,27 +62,34 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   ],
   callbacks: {
     async signIn({ user, account, profile }) {
-      // Allow account linking for OAuth providers
+      // For OAuth providers, we want to allow sign-ins even if the account exists
       if (account?.provider === "google" || account?.provider === "linkedin") {
         try {
           const client = await clientPromise;
           const db = client.db();
-          const users = db.collection("users");
-
-          // Check if user with this email already exists
-          const existingUser = await users.findOne({ email: user.email });
+          const accounts = db.collection("accounts");
           
-          if (existingUser) {
-            // Allow the sign-in - NextAuth will handle the linking
+          // Check if an account with this provider and providerAccountId already exists
+          const existingAccount = await accounts.findOne({
+            provider: account.provider,
+            providerAccountId: account.providerAccountId
+          });
+          
+          // If the exact same OAuth account exists, allow sign-in
+          if (existingAccount) {
             return true;
           }
+          
+          // For new OAuth accounts, let NextAuth handle the creation/linking
+          return true;
+          
         } catch (error) {
           console.error("Error during OAuth sign-in:", error);
           return false;
         }
       }
       
-      return true; // Allow sign-in for credentials and new OAuth users
+      return true; // Allow sign-in for credentials
     },
     async jwt({ token, user, account }) {
       if (user) {
@@ -101,5 +108,20 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     signIn: '/auth/login',
     error: '/auth/error',
   },
-  debug: true, // Enable debug mode for development 
+  // Add these configuration options to handle account linking better
+  events: {
+    async linkAccount({ user, account, profile }) {
+      console.log("Account linked:", { user: user.email, provider: account.provider });
+    },
+    async signIn({ user, account, profile, isNewUser }) {
+      console.log("Sign in event:", { 
+        user: user.email, 
+        provider: account?.provider, 
+        isNewUser 
+      });
+    }
+  },
+  // Enable account linking
+  allowDangerousEmailAccountLinking: true,
+  debug: process.env.NODE_ENV === 'development'
 });
