@@ -3,7 +3,6 @@ import { NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { ChatService } from "@/lib/chatService";
 
-// Send message to AI and save to database
 export async function POST(request) {
   try {
     const session = await auth();
@@ -31,7 +30,7 @@ export async function POST(request) {
     if (createNewSession || !sessionId) {
       const sessionResult = await ChatService.createChatSession(
         session.user.id,
-        message.substring(0, 50) + "..." // Use first part of message as title
+        message.substring(0, 50) + "..."
       );
       
       if (!sessionResult.success) {
@@ -42,6 +41,15 @@ export async function POST(request) {
       }
       
       chatSessionId = sessionResult.sessionId;
+    }
+
+    // Get recent chat history (last 10 messages) before sending to n8n
+    let chatHistory = [];
+    if (chatSessionId) {
+      const historyResult = await ChatService.getChatHistory(chatSessionId, 10); // NEW: limit to last 10 messages
+      if (historyResult.success) {
+        chatHistory = historyResult.messages || [];
+      }
     }
 
     // Save user message to database
@@ -58,7 +66,42 @@ export async function POST(request) {
       );
     }
 
-    // Send message to n8n workflow
+    // Enhanced company information
+    const companyInfo = {
+      name: "Mobarrez",
+      domain: "ai agent development, web development, branding, marketing",
+      services: [
+        "Ai agent Development",
+        "Custom Web Development",
+        "E-commerce Solutions", 
+        "Brand Identity Design",
+        "Digital Marketing",
+        "SEO Optimization",
+        "UI/UX Design"
+      ],
+      expertise: [
+        "N8n",
+        "Next.js",
+        "React",
+        "JavaScript",
+        "MongoDB",
+        "TailwindCSS",
+        "Node.js"
+      ],
+      values: [
+        "Precision in progress",
+        "Quality craftsmanship",
+        "Client-focused solutions",
+        "Innovation and creativity",
+        "Reliable partnerships"
+      ],
+      contact: {
+        website: "https://mobarrez.com",
+        email: "info@mobarrez.com"
+      }
+    };
+
+    // Send enhanced data to n8n workflow
     const n8nResponse = await fetch(process.env.N8N_WEBHOOK_URL, {
       method: 'POST',
       headers: {
@@ -72,9 +115,15 @@ export async function POST(request) {
           name: session.user.name,
           email: session.user.email
         },
-        companyInfo: {
-          name: "Mobarrez",
-          domain: "web development, branding, marketing"
+        companyInfo, // NEW: Enhanced company info
+        chatHistory: chatHistory.map(msg => ({ // NEW: Chat history
+          role: msg.role || msg.sender, // Handle both role and sender fields
+          content: msg.content || msg.message || msg.text,
+          timestamp: msg.timestamp
+        })),
+        metadata: { // NEW: Metadata
+          totalHistoryMessages: chatHistory.length,
+          hasContext: chatHistory.length > 0
         }
       })
     });
@@ -90,23 +139,24 @@ export async function POST(request) {
       chatSessionId,
       aiResponse,
       "ai",
-      null, // intent will be determined by n8n
+      null,
       { 
         responseTime: new Date().toISOString(),
-        source: "n8n_workflow"
+        source: "n8n_workflow",
+        hadContext: chatHistory.length > 0 // NEW: Track if context was used
       }
     );
 
     if (!aiMessageResult.success) {
       console.error("Failed to save AI message:", aiMessageResult.error);
-      // Continue anyway since user got the response
     }
 
     return NextResponse.json({
       success: true,
       response: aiResponse,
       sessionId: chatSessionId,
-      messageId: aiMessageResult.messageId
+      messageId: aiMessageResult.messageId,
+      contextUsed: chatHistory.length > 0 // NEW: Let frontend know if context was used
     });
 
   } catch (error) {
@@ -118,7 +168,7 @@ export async function POST(request) {
   }
 }
 
-// Get chat sessions for user
+// Get chat sessions for user (unchanged)
 export async function GET(request) {
   try {
     const session = await auth();
@@ -134,11 +184,9 @@ export async function GET(request) {
     const sessionId = searchParams.get('sessionId');
 
     if (sessionId) {
-      // Get specific chat history
       const historyResult = await ChatService.getChatHistory(sessionId);
       return NextResponse.json(historyResult);
     } else {
-      // Get all user sessions
       const sessionsResult = await ChatService.getUserChatSessions(session.user.id);
       return NextResponse.json(sessionsResult);
     }

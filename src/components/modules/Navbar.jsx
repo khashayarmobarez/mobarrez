@@ -68,7 +68,7 @@ const Navbar = () => {
 
     if (status === "authenticated" && session) {
       return (
-        <div className={`${isMobile ? 'flex flex-col items-center gap-4 mt-6' : 'flex items-center gap-3'}`}>
+        <div className={`${isMobile ? 'flex flex-col items-center gap-0 mt-6' : 'flex items-center gap-3'}`}>
           {/* User info - optional */}
           <div className={`${isMobile ? 'text-center' : 'hidden lg:flex flex-col'}`}>
             <span className="text-sm text-foreground">Welcome,</span>
@@ -92,7 +92,7 @@ const Navbar = () => {
               if (isMobile) toggleDrawer();
               handleLogout();
             }}
-            className={`${baseClasses} ${isMobile ? 'w-1/2 btn-outline' : 'btn-outline'}`}
+            className={`${baseClasses} ${isMobile ? 'w-1/2 btn-outline !mt-4' : 'btn-outline'}`}
           >
             Logout
           </button>

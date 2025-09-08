@@ -67,27 +67,81 @@ export class ChatService {
     }
   }
 
-  static async getChatHistory(sessionId, limit = 50) {
+  static async getChatHistory(sessionId, limit = null) {
     try {
       const client = await clientPromise;
       const db = client.db();
       const messages = db.collection("chat_messages");
 
-      const history = await messages
-        .find({ sessionId: new ObjectId(sessionId) })  // Fixed: Using the constructor directly
-        .sort({ timestamp: 1 })
-        .limit(limit)
-        .toArray();
+      // Build query with optional limit
+      if (limit && typeof limit === 'number' && limit > 0) {
+        // For limited results, we want the most recent messages
+        // So we sort descending, limit, then reverse
+        const recentMessages = await messages
+          .find({ sessionId: new ObjectId(sessionId) })
+          .sort({ timestamp: -1 }) // Newest first
+          .limit(limit)
+          .toArray();
+        
+        // Reverse to get chronological order (oldest to newest)
+        const messagesArray = recentMessages.reverse().map(msg => ({
+          _id: msg._id.toString(),
+          message: msg.content, // Note: using 'message' to match your frontend
+          sender: msg.role === 'user' ? 'user' : 'ai',
+          timestamp: msg.timestamp,
+          intent: msg.intent,
+          metadata: msg.metadata,
+          // Add these for compatibility
+          id: msg._id.toString(),
+          text: msg.content,
+          role: msg.role,
+          content: msg.content
+        }));
 
-      return {
-        success: true,
-        messages: history
-      };
+        return {
+          success: true,
+          messages: messagesArray,
+          total: messagesArray.length,
+          limited: true,
+          limit: limit
+        };
+      } else {
+        // Return all messages (existing functionality)
+        const messagesArray = await messages
+          .find({ sessionId: new ObjectId(sessionId) })
+          .sort({ timestamp: 1 }) // Oldest first for full history
+          .toArray();
+        
+        return {
+          success: true,
+          messages: messagesArray.map(msg => ({
+            _id: msg._id.toString(),
+            message: msg.content, // Note: using 'message' to match your frontend
+            sender: msg.role === 'user' ? 'user' : 'ai',
+            timestamp: msg.timestamp,
+            intent: msg.intent,
+            metadata: msg.metadata,
+            // Add these for compatibility
+            id: msg._id.toString(),
+            text: msg.content,
+            role: msg.role,
+            content: msg.content
+          })),
+          total: messagesArray.length,
+          limited: false
+        };
+      }
+
     } catch (error) {
       console.error("Error getting chat history:", error);
-      return { success: false, error: error.message };
+      return {
+        success: false,
+        error: error.message,
+        messages: []
+      };
     }
   }
+
 
   static async getUserChatSessions(userId, limit = 20) {
     try {
