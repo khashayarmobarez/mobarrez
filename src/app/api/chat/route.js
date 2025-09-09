@@ -43,10 +43,10 @@ export async function POST(request) {
       chatSessionId = sessionResult.sessionId;
     }
 
-    // Get recent chat history (last 10 messages) before sending to n8n
+    // Get recent chat history (last 5 messages) before sending to n8n
     let chatHistory = [];
     if (chatSessionId) {
-      const historyResult = await ChatService.getChatHistory(chatSessionId, 10); // NEW: limit to last 10 messages
+      const historyResult = await ChatService.getChatHistory(chatSessionId, 5); // NEW: limit to last 10 messages
       if (historyResult.success) {
         chatHistory = historyResult.messages || [];
       }
