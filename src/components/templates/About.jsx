@@ -33,7 +33,10 @@ const About = () => {
                         About Mobarrez
                     </TypingAnimation>
                     <p className="text-lg text-muted-foreground max-w-2xl">
-                        At Mobarrez, we empower businesses by building intelligent AI agents, seamless AI-driven automation, and custom software solutions—including responsive websites and scalable applications—tailored to your unique needs. As a dedicated consulting team, we provide expert guidance to navigate the digital landscape, ensuring precision, innovation, and measurable growth for your business.
+                        {/* Hero Section */}
+                    Mobarrez is not an agency.  
+                    We are the forge that turns ambitious learners into elite, culture-driven software engineers and AI specialists — the kind companies fight to hire.  
+                    Through real client projects, relentless skill training, and a professional culture built on ownership and discipline, we create professionals who don’t just code — they ship, they lead, and they earn while still in the program.
                     </p>
                 </div>
             </section>
@@ -45,7 +48,18 @@ const About = () => {
 
                     <div className="mt-8 max-w-2xl text-lg text-muted-foreground ">
                         <p>
-                            Mobarrez was founded in 2023 with a bold mission: to empower businesses through cutting-edge technology, prioritizing precision and quality in every solution we deliver. Starting with our first project—a transformative AI-driven platform—we quickly earned the trust of companies worldwide, growing into a reliable partner known for crafting innovative solutions that seamlessly blend creativity and technical excellence .
+                            Mobarrez began with one conviction:  
+                            The world doesn’t need more tutorials. It needs more engineers who think independently, ship production code fast, and operate like senior team members from day one.
+
+                            So we built a new path.  
+                            No 6-month bootcamps with fake projects.  
+                            No endless theory.  
+                            Just real client work, real deadlines, real ownership — and a culture that demands excellence.
+
+                            The result?  
+                            Learners become apprentices. Apprentices become elite professionals. The best join the Mobarrez Pro Team or get placed at top startups and enterprises — often before they even finish.
+
+                            This is Precision in Progress — lived, not preached.
                         </p>
                         <p className="mt-4">
                             Our vision is to lead the future of technology by turning visionary ideas into impactful, high-quality realities. We focus on precision in every detail, ensuring businesses can confidently navigate the digital landscape with solutions like AI agents, custom software, and strategic consulting that drive lasting success.
