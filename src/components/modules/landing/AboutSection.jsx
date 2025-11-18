@@ -27,7 +27,10 @@ const AboutSection = () => {
             <div className='flex flex-col items-center justify-center w-full md:w-[50%]'>
                 <div className="shine text-center ">Your Partner in Tech Excellence</div>
                 <p className='text-muted-foreground text-center md:w-[60%] w-[80%] mt-2 font-semibold opacity-70'>
-                At Mobarrez, we specialize in delivering innovative tech solutions that drive progress. From web development to AI integration and automation, our team is dedicated to transforming ideas into impactful realities with precision and creativity.
+                At Mobarrez, we don’t just build software — we forge elite, culture-driven engineers and AI specialists the world actually wants to hire.
+                Through relentless practical training, real client projects, and a no-BS professional culture, we transform ambitious learners into independent thinkers who ship production-grade code, master modern tools (Next.js, AI agents, system design), and deliver measurable results.
+                The best rise to the top and join the Mobarrez Pro Team or get placed with top companies.
+                Precision in Progress isn’t a slogan. It’s the standard we live by and the promise we keep.
                 </p>
             </div>
 

@@ -39,16 +39,16 @@ const Landing = async () => {
               </div>
               <Logo className="w-28 h-20 -mb-4" color='var(--foreground)' />
               <div className='flex flex-col items-center justify-center w-full h-16'>
-                  <MorphingText texts={["Mobarrez", "AI automation", "Web-apps", "Applications"]} />
+                  <MorphingText texts={["Mobarrez", "AI agents", "Automations", "Applications"]} />
               </div>
               {/* <h1 className=" text-3xl font-extrabold">Mobarrez</h1> */}
               <h2 className=" text-xl font-medium mb-0 -mt-5 md:mt-2 z-20">Precision in Progress</h2>
-              <p className='text-center text-base tex t-muted-foreground w-[90%] z-20'>We deliver cutting-edge tech solutions to propel your business forward.</p>
+              <p className='text-center text-base tex t-muted-foreground w-[90%] z-20'>We create startup war rooms to propel your business forward.</p>
               <Link href="/services">
                 <button className="btn btn-outline btn-primary w-80 h-10 rounded-2xl text-primary transform hover:scale-105 hover:text-background transition-transform duration-300 mt-2">Explore Our Solutions</button>
               </Link>
               <Link href="/chat">
-                <button className="btn btn-primary w-80 h-10 rounded-2xl text-[#f1f1f1] transform hover:scale-105 transition-transform duration-300">Chat with our Ai Agent</button>
+                <button className="btn btn-primary w-80 h-10 rounded-2xl text-[#f1f1f1] transform hover:scale-105 transition-transform duration-300">Chat with our Agent</button>
               </Link>
               <ScrollDown className={'mt-28'} />
             </div>

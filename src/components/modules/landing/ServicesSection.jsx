@@ -65,7 +65,7 @@ const ServicesSection = () => {
                 md:flex-row md:justify-between md:px-4 md:items-center'>
                     <AnimatedBeamDemo />
                     <p className=" text-xl md:w-[35%] font-semibold">
-                        We integrate advanced AI and automation to optimize your workflows with precision, delivering personalized solutions that boost efficiency and elevate customer experiences.
+                        We integrate advanced AI and automation to optimize companies workflows with precision, delivering personalized solutions that boost efficiency and elevate customer experiences.
                     </p>
                 </div>
             </div>
@@ -82,7 +82,7 @@ const ServicesSection = () => {
                                 <TerminalSection />
                             </div>
                             <p className=" text-xl md:w-[35%] font-semibold -mt-4 md:-mt-0">
-                                We build custom, scalable software with cutting-edge tools, ensuring robust solutions tailored to your needs.
+                                At mobarrez we build custom, scalable software with cutting-edge tools, ensuring robust solutions tailored to each business needs.
                             </p>
                         </div>
                     </>
@@ -93,7 +93,7 @@ const ServicesSection = () => {
                 visible3 && (
                     <>
                         <TypingAnimation className="text-4xl font-bold">
-                            Startups and consulting
+                            Startups war teams and consulting
                         </TypingAnimation>
                         <div className='flex flex-col items-start justify-around  w-full h-full  md:gap-y-8
                         md:flex-row md:justify-between md:px-4 md:items-center'>
